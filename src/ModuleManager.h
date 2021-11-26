@@ -1,15 +1,29 @@
 #ifndef MODULEMANAGER_H
 #define MODULEMANAGER_H
 #pragma once
-	
-class ModuleManager  
+
+#include <vector>
+
+#include "IModule.h"
+#include "IInputHandler.h"
+
+class ModuleManager
 {
-	private:
+public:
+	ModuleManager(IInputHandler *inputHandler){};
+	~ModuleManager() = default;
 
-	public:
+	template <class T>
+	IModule *AddModule()
+	{
+		IModule *new_module = new T();
+		new_module->Initialize(this, inputHandler);
+		modules.push_back(new_module);
+		return new_module;
+	}
 
-		ModuleManager();
-		~ModuleManager();
-
+private:
+	IInputHandler *inputHandler;
+	std::vector<IModule *> modules;
 };
 #endif

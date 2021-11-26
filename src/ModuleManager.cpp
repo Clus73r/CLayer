@@ -1,11 +1,1 @@
-#include "ModuleManager.h"  
-	
-ModuleManager::ModuleManager()
-{
-	
-}
-	
-ModuleManager::~ModuleManager()
-{
-	
-}
+#include "ModuleManager.h"

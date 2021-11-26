@@ -1,15 +1,25 @@
 #ifndef CONFIGREADER_H
 #define CONFIGREADER_H
 #pragma once
-	
-class ConfigReader  
+
+#include <string>
+
+#include "InputHandler.h"
+#include "ModuleManager.h"
+
+class ConfigReader
 {
-	private:
+private:
+	IInputHandler *inputHandler;
+	ModuleManager *moduleManager;
 
-	public:
+	bool ReadPropertyLine(const std::string &line);
+	bool ReadHeaderLine(const std::string &line);
 
-		ConfigReader();
-		~ConfigReader();
+public:
+	void ReadConfigFile(const std::string &path);
 
+	ConfigReader(IInputHandler *ih, ModuleManager *mm) : inputHandler(ih), moduleManager(mm) {}
+	~ConfigReader() = default;
 };
 #endif

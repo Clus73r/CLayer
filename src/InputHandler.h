@@ -1,15 +1,22 @@
 #ifndef INPUTHANDLER_H
 #define INPUTHANDLER_H
 #pragma once
-	
-class InputHandler  
+
+#include <unordered_map>
+#include <functional>
+
+#include "IInputHandler.h"
+
+typedef std::unordered_map<int, std::function<void()>> InputLayer;
+
+class InputHandler : public IInputHandler
 {
-	private:
+private:
+	InputLayer activeLayer;
+	std::vector<InputLayer> inputLayers;
 
-	public:
-
-		InputHandler();
-		~InputHandler();
-
+public:
+	InputHandler();
+	~InputHandler();
 };
 #endif

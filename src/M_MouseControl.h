@@ -1,11 +1,11 @@
 #ifndef M_MOUSECONTROL_H
 #define M_MOUSECONTROL_H
 #pragma once
-	
-class M_MouseControl  
-{
-	private:
 
+#include "IModule.h"
+	
+class M_MouseControl : public IModule
+{
 	public:
 
 		M_MouseControl();

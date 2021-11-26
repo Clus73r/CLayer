@@ -9,9 +9,10 @@
 				"/Zi",
 				"/EHsc",
 				"/nologo",
+				"/std:c++20",
 				"/Fe:",
-				"${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe",
-				"..\\src\\main.cpp"
+				"${workspaceFolder}\\bin\\CLayer.exe",
+				"..\\src\\**.cpp"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}\\intermediate"
