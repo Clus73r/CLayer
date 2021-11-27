@@ -2,29 +2,16 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "cppbuild",
-			"label": "C/C++: cl.exe build active file",
-			"command": "cl.exe",
-			"args": [
-				"/Zi",
-				"/EHsc",
-				"/nologo",
-				"/std:c++20",
-				"/Fe:",
-				"${workspaceFolder}\\bin\\CLayer.exe",
-				"..\\src\\**.cpp"
-			],
+			"label": "cmake",
+			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}\\intermediate"
+				"cwd": "${workspaceFolder}\\build"
 			},
-			"problemMatcher": [
-				"$msCompile"
-			],
+			"command": "cmake ${workspaceFolder}; MSBuild.exe CLayer.sln",
 			"group": {
 				"kind": "build",
 				"isDefault": true
-			},
-			"detail": "compiler: cl.exe"
+			}
 		}
 	]
 }

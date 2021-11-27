@@ -13,6 +13,10 @@ public:
         inputHandler = ih;
     }
 
+    virtual void EnableModule() = 0;
+    virtual void DisableModule() = 0;
+    virtual void ToggleModule() = 0;
+
 protected:
     ModuleManager *moduleManager;
     IInputHandler *inputHandler;

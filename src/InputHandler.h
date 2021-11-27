@@ -4,6 +4,7 @@
 
 #include <unordered_map>
 #include <functional>
+#include "Windows.h"
 
 #include "IInputHandler.h"
 
@@ -14,9 +15,11 @@ class InputHandler : public IInputHandler
 private:
 	InputLayer activeLayer;
 	std::vector<InputLayer> inputLayers;
+	static HHOOK hHook;
+	static LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam);
 
 public:
-	InputHandler();
+		InputHandler();
 	~InputHandler();
 };
 #endif

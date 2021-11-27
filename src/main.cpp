@@ -11,9 +11,17 @@ int main()
     ModuleManager moduleManager(&inputHandler);
     ConfigReader configReader(&inputHandler, &moduleManager);
 
-    moduleManager.AddModule<M_MouseControl>();
+    M_MouseControl *m = static_cast<M_MouseControl *>(moduleManager.AddModule<M_MouseControl>());
+    m->EnableModule();
 
     configReader.ReadConfigFile("Config/clayerrc.cfg");
+
+    MSG msg;
+    while (!GetMessage(&msg, NULL, NULL, NULL))
+    {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
 
     return 0;
 }
