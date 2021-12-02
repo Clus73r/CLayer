@@ -3,13 +3,14 @@
 #pragma once
 
 #include <atomic>
+#include <thread>
 #include "IModule.h"
 
 class M_MouseControl : public IModule
 {
 private:
 	std::atomic_bool stop_signal = false;
-	bool isRunning = false;
+	std::thread *loop_thread = nullptr;
 
 	void Loop();
 

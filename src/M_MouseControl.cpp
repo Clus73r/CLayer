@@ -1,16 +1,16 @@
 #include "M_MouseControl.h"
 
-#include <thread>
 #include <mutex>
 #include <iostream>
 #include "Windows.h"
 #include <functional>
+#include <bitset>
 
 void M_MouseControl::Loop()
 {
     for (;;)
     {
-        std::cout << "aa" << std::endl;
+        std::cout << std::bitset<8>(GetKeyState(74)) << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(5));
         if (stop_signal)
         {
@@ -22,25 +22,25 @@ void M_MouseControl::Loop()
 
 void M_MouseControl::EnableModule()
 {
-    if (!isRunning)
+    if (!loop_thread)
     {
-        std::thread t(&M_MouseControl::Loop, this);
-        isRunning = true;
+        loop_thread = new std::thread(&M_MouseControl::Loop, this);
     }
 }
 
 void M_MouseControl::DisableModule()
 {
-    if (isRunning)
+    if (loop_thread)
     {
         stop_signal = true;
-        isRunning = false;
+        loop_thread->join();
+        loop_thread = nullptr;
     }
 }
 
 void M_MouseControl::ToggleModule()
 {
-    if (isRunning)
+    if (loop_thread)
     {
         DisableModule();
     }

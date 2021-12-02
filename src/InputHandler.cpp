@@ -7,7 +7,7 @@ HHOOK InputHandler::hHook;
 LRESULT CALLBACK InputHandler::LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
     PKBDLLHOOKSTRUCT p = (PKBDLLHOOKSTRUCT)lParam;
-    std::cout << p->vkCode << std::endl;
+    // std::cout << p->vkCode << std::endl;
 
     // auto key = keybinds.find(p->vkCode);
     // if (key != keybinds.end())

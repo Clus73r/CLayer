@@ -6,6 +6,7 @@
 
 bool ConfigReader::ReadPropertyLine(const std::string &line)
 {
+    return false;
     std::regex rgx("^(?!#)([a-zA-Z0-9_]*):\\s*([a-zA-Z0-9_]*)\\s*=\\s*([a-zA-Z0-9_]*)");
     std::smatch matches;
     if (std::regex_search(line, matches, rgx) && matches.size() == 4)

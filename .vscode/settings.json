@@ -3,6 +3,8 @@
         "xstring": "cpp",
         "iostream": "cpp",
         "regex": "cpp",
-        "charconv": "cpp"
+        "charconv": "cpp",
+        "atomic": "cpp",
+        "memory": "cpp"
     }
 }
